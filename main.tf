@@ -80,17 +80,19 @@ resource "aws_security_group" "lab_sg" {
 
 # EC2 Instance with Nginx
 resource "aws_instance" "ubuntu_nginx" {
+  depends_on = [aws_security_group.lab_sg]
+  
   ami           = var.ami_id
   instance_type = var.instance_type
   subnet_id     = aws_subnet.lab_subnet.id
   associate_public_ip_address = true
-  security_groups             = [aws_security_group.lab_sg.name]
+  vpc_security_group_ids      = [aws_security_group.lab_sg.id]
 
   user_data = <<-EOF
-                #!/bin/bash
-                apt update -y
-                apt install nginx -y
-                systemctl start nginx
+               #!/bin/bash
+               apt update -y
+               apt install nginx -y
+               systemctl start nginx
   EOF
 
   tags = {
