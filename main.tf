@@ -97,16 +97,3 @@ resource "aws_instance" "ubuntu_nginx" {
     Name = "Ubuntu-Nginx"
   }
 }
-
-# Outputs
-output "public_ip" {
-  value = aws_instance.ubuntu_nginx.public_ip
-}
-
-output "subnet_id" {
-  value = aws_subnet.lab_subnet.id
-}
-
-output "vpc_id" {
-  value = aws_vpc.lab_vpc.id
-}
