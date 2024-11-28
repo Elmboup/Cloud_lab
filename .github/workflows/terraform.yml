@@ -1,0 +1,41 @@
+name: Deploy Infrastructure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Vérifier le code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Étape 2 : Installer Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.6
+
+      # Étape 3 : Configurer AWS Credentials
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      # Étape 4 : Terraform Init
+      - name: Initialize Terraform
+        run: terraform init
+
+      # Étape 5 : Terraform Plan
+      - name: Terraform Plan
+        run: terraform plan
+
+      # Étape 6 : Terraform Apply
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
