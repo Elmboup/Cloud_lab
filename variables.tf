@@ -10,7 +10,7 @@ variable "subnet_cidr" {
 
 variable "ami_id" {
   description = "AMI ID for the Ubuntu instance"
-  default     = "ami-0d64bb532e0502c46" # Ubuntu Server 24.04 LTS (HVM)
+  default     = "ami-0e8d228ad90af673b" # Ubuntu Server 24.04 LTS (HVM)
 }
 
 variable "instance_type" {
