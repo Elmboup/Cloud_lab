@@ -63,3 +63,4 @@ Sous "Secrets", ajoutez les variables suivantes :
 AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
 Ces secrets seront utilisés dans le workflow pour configurer les credentials AWS.
+

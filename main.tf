@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "eu-west-1"
+  region = "eu-west-2"
 }
 
 # VPC
@@ -81,7 +81,7 @@ resource "aws_security_group" "lab_sg" {
 # EC2 Instance with Nginx
 resource "aws_instance" "ubuntu_nginx" {
   depends_on = [aws_security_group.lab_sg]
-  
+
   ami           = var.ami_id
   instance_type = var.instance_type
   subnet_id     = aws_subnet.lab_subnet.id
