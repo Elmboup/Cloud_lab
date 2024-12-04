@@ -52,7 +52,7 @@ Le pipeline CI/CD est configuré dans `.github/workflows/terraform.yml` pour aut
 Clonez ce repository sur votre machine locale ou dans votre propre repository GitHub.
 Modifier le fichier variables.tf pour définir les variables nécessaires (par exemple vpc_cidr, subnet_cidr, ami_id, instance_type).
 Poussez vos modifications sur GitHub et le pipeline GitHub Actions s'exécutera automatiquement pour créer votre infrastructure.
-Une fois l'infrastructure déployée, vous pouvez accéder à votre instance EC2 via son IP public
+Une fois l'infrastructure déployée, vous pouvez accéder à votre instance EC2 via son IP public (pour ce projet : `public_ip = "18.175.62.251"`)
 
 ## Secrets GitHub
 
